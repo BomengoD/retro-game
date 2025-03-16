@@ -1,1 +1,43 @@
+from tkinter import *
+import random
+import tkinter.messagebox
+from tkinter import ttk
 
+class Game:
+    def __init__(self):
+        
+        
+        self.fenetre = Tk()
+        self.fenetre['bg']='black'
+        self.fenetre.state("zoomed")
+        self.fenetre.grid_rowconfigure(0, weight=1)
+        self.fenetre.grid_rowconfigure(1, weight=1)
+        self.fenetre.grid_rowconfigure(2, weight=1)
+        self.fenetre.grid_rowconfigure(3, weight=1)
+        self.fenetre.grid_columnconfigure(0, weight=1)
+        self.fenetre.grid_columnconfigure(1, weight=1)
+        self.fenetre.grid_columnconfigure(2, weight=1)
+        self.fenetre.title("SPACERANGERS")
+        #Le LabelFrame qui occupe la partie supérieur de l'écran de jeu 
+        self.demarrage= LabelFrame(self.fenetre, bg='black', relief=SUNKEN,fg='white',font=("Comic Sans MS", 10), padx=20, pady=20)
+        self.demarrage.grid(sticky='nsew',column=0, row=0,columnspan=3,)
+        self.photo=PhotoImage(file="/Volumes/boussa/af37438bfe6d4ddd7f09a04051869631.png")
+        self.Label1=Label(self.demarrage,bg='black', image=self.photo)
+        self.Label1.pack()
+        #Frame3 située à droite de l'écran de jeu et contient les trois boutons pour quitter le jeu, jouer, et les règles
+        self.Frame3=Frame(self.fenetre,bg='black')
+        #Utilisation de la méthode grid comme pour la Frame2 et les autres widgets présents dans la fenetre
+        self.Frame3.grid(sticky='ns', column=1, row=2, ipadx=10)
+        self.Frame3.grid_columnconfigure(0, weight=1)
+        self.Frame3.grid_rowconfigure(0, weight=1)
+        self.Frame3.grid_rowconfigure(1, weight=1)
+        self.Frame3.grid_rowconfigure(2, weight=1)
+        #Placement et personnalisation des boutons dans la Frame3
+        self.bouton_quitter=Button(self.Frame3,bg='#000000', text='QUITTER LE JEU', relief=FLAT,font=("Comic Sans MS", 20),)
+        self.bouton_quitter.grid(column=0, row=2,)
+        self.bouton_regle=Button(self.Frame3,bg='#000000',text='REGLES', relief=FLAT,font=("Comic Sans MS", 20),)
+        self.bouton_regle.grid(column=0, row=1,)
+        self.bouton_jouer=Button(self.Frame3, bg='#000000',text='JOUER', relief=FLAT,font=("Comic Sans MS", 20), )
+        self.bouton_jouer.grid(column=0, row=0,)
+        self.fenetre.mainloop()
+app=Game()
